@@ -1,0 +1,761 @@
+.broker-app {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  max-height: 100vh;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* Let grid columns shrink so header/input stay visible and content scrolls */
+.broker-app > .broker-leads,
+.broker-app > .broker-chat,
+.broker-app > .broker-detail,
+.broker-app > .broker-properties-panel {
+  min-height: 0;
+}
+
+.broker-app-properties {
+  grid-template-columns: 280px 1fr;
+}
+
+.broker-nav-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.broker-nav-tabs button {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background: var(--surface-hover);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.broker-nav-tabs button.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.broker-properties-panel {
+  min-height: 0;
+  padding: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.broker-properties-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.broker-properties-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.broker-properties-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.broker-add-property-form {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 640px;
+}
+
+.broker-add-property-form h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.broker-add-property-form .form-row {
+  margin-bottom: 14px;
+}
+
+.broker-add-property-form .form-row label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.broker-add-property-form .form-row input,
+.broker-add-property-form .form-row select,
+.broker-add-property-form .form-row textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.broker-add-property-form .form-row.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.broker-add-property-form .form-row.two-cols > div label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.broker-add-property-form .form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.broker-upload-media-section {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.broker-upload-media-section input[type="file"] {
+  margin: 10px 0;
+  color: var(--text);
+}
+
+.upload-media-buttons { display: flex; gap: 10px; margin-top: 12px; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: var(--surface-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: rgba(200, 80, 80, 0.2);
+  color: #e88;
+  border: 1px solid rgba(200, 80, 80, 0.4);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-danger.small, .btn-secondary.small { padding: 6px 10px; font-size: 12px; }
+
+.broker-properties-list { display: flex; flex-direction: column; gap: 20px; }
+
+.broker-property-card {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.broker-property-card h4 { font-size: 16px; margin-bottom: 10px; }
+
+.broker-property-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.broker-property-desc, .broker-property-amenities {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.broker-property-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.confirm-text { font-size: 12px; color: var(--text-muted); }
+
+.broker-upload-inline { margin-top: 10px; }
+
+.broker-media-gallery { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+.broker-media-gallery h5 { font-size: 13px; margin-bottom: 10px; }
+
+.broker-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.broker-media-item {
+  position: relative;
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.broker-media-item img,
+.broker-media-item video {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.broker-media-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(0,0,0,0.3);
+}
+
+.btn-icon {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-icon:hover { background: var(--accent); color: var(--bg); }
+
+.broker-leads {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.broker-leads-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.broker-leads-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.broker-lead-row {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.broker-lead-row:hover {
+  background: var(--surface-hover);
+}
+
+.broker-lead-row.selected {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.broker-lead-row .name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.broker-lead-row .preview {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.broker-lead-row.selected .preview {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.broker-lead-row .badge {
+  display: inline-block;
+  font-size: 11px;
+  background: var(--badge);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.broker-lead-row.selected .badge {
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
+
+.broker-leads-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.broker-chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+
+.broker-chat-header {
+  flex-shrink: 0;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.broker-chat-header h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.broker-chat-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Toggle (checkbox as switch) */
+.broker-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  user-select: none;
+}
+
+.broker-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.broker-toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.broker-toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.broker-toggle input:checked + .broker-toggle-slider {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.broker-toggle input:checked + .broker-toggle-slider::after {
+  transform: translateX(16px);
+  background: var(--bg);
+}
+
+.broker-toggle-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.broker-chat .live-indicator {
+  font-size: 11px;
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.broker-chat-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.broker-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.broker-chat .msg {
+  max-width: 78%;
+  display: flex;
+  gap: 10px;
+}
+
+.broker-chat .msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.broker-chat .msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.broker-chat .msg.assistant .msg-avatar {
+  background: var(--border);
+}
+
+.broker-chat .msg.user .msg-avatar {
+  background: var(--accent-dim);
+}
+
+.broker-chat .msg-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.broker-chat .msg.assistant .msg-bubble {
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+
+.broker-chat .msg.user .msg-bubble {
+  background: var(--accent);
+  color: var(--bg);
+  border-bottom-right-radius: 4px;
+}
+
+.broker-chat .msg-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.broker-input-area {
+  flex-shrink: 0;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.broker-input-area .row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.broker-input-area textarea {
+  flex: 1;
+  min-height: 72px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text);
+  resize: none;
+  outline: none;
+}
+
+.broker-input-area textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.broker-input-area button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.broker-detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.broker-detail-title {
+  flex-shrink: 0;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.broker-detail-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  font-size: 13px;
+}
+
+.broker-detail-section {
+  margin-bottom: 20px;
+}
+
+.broker-detail-section h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.broker-detail-section p {
+  color: var(--text);
+}
+
+.broker-detail-section .muted {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.pending-block {
+  background: var(--badge);
+  border: 1px solid var(--accent-dim);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.pending-block-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.pending-block-edit {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.pending-block-edit:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.pending-recommendations {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.pending-recommendations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pending-recommendations-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pending-recommendations-add {
+  position: relative;
+}
+
+.pending-recommendations-picker {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.pending-picker-item {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pending-picker-item:hover {
+  background: var(--accent-dim);
+  color: var(--bg);
+}
+
+.pending-recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pending-rec-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.pending-rec-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pending-rec-card-body strong {
+  font-size: 13px;
+}
+
+.pending-rec-card-body span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pending-block .msg-preview {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 8px 0;
+  max-height: 60px;
+  overflow-y: auto;
+}
+
+.pending-block .actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pending-block button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-approve {
+  background: var(--success);
+  color: white;
+}
+
+.btn-reject {
+  background: var(--surface-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+}

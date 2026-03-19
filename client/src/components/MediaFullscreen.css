@@ -1,0 +1,48 @@
+.media-fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.media-fullscreen-content {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-fullscreen-media {
+  max-width: 100%;
+  max-height: calc(100vh - 40px);
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.media-fullscreen-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: var(--surface-hover);
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-fullscreen-close:hover {
+  background: var(--border);
+}

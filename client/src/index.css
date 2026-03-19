@@ -1,0 +1,65 @@
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-hover: #242424;
+  --border: #2e2e2e;
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --accent: #c9a227;
+  --accent-dim: #a68520;
+  --success: #2d8a5e;
+  --badge: #c9a22722;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+#root { min-height: 100vh; }
+
+input, textarea, button {
+  font-family: inherit;
+}
+
+button { cursor: pointer; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 1.5s ease infinite;
+}
+
+/* Visible scrollbars for scrollable areas */
+.scrollable::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollable::-webkit-scrollbar-track {
+  background: var(--surface-hover);
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 5px;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}
+.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) var(--surface-hover);
+}
